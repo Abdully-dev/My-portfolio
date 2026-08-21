@@ -326,6 +326,19 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
   .testimonial-card{padding:34px 22px}
   .about-float-card{right:10px}
 }
+@media(min-width:901px){
+  /* Separate the portrait and copy into dedicated columns on larger screens. */
+  .hero-visual{left:auto;right:7%}
+  .hero-content{
+    width:min(calc(100% - 48px),1160px);
+    max-width:1160px;
+    margin:0 auto;
+    padding-left:0;
+    padding-right:clamp(390px,43vw,510px);
+  }
+  .hero-content .hero-sub{max-width:500px}
+  .hero-content .hero-stats{max-width:510px}
+}
 </style>
 </head>
 <body>
