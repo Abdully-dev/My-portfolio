@@ -232,9 +232,15 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
 .nav-links a{color:#c7d1dc;font-size:.78rem;text-transform:uppercase;letter-spacing:.09em}
 .nav-links a:hover{color:var(--accent)}
 .nav-links a::after{background:var(--accent);height:1px}
+.nav-actions{display:flex;align-items:center;gap:10px}
 .nav-cta,.btn-primary,.contact-form button{border-radius:4px;background:var(--accent);color:#07172a;letter-spacing:.025em;box-shadow:none}
 .nav-cta{padding:10px 20px}
 .nav-cta:hover,.btn-primary:hover,.contact-form button:hover{background:#d0b57c;box-shadow:0 10px 24px rgba(0,0,0,.22);opacity:1}
+.theme-toggle{width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(184,154,97,.42);border-radius:4px;background:rgba(12,34,61,.72);color:var(--accent);cursor:pointer;font-size:1.12rem;transition:var(--transition)}
+.theme-toggle:hover{background:rgba(184,154,97,.12);border-color:var(--accent);transform:translateY(-1px)}
+.theme-toggle .sun{display:none}
+[data-theme="light"] .theme-toggle .moon{display:none}
+[data-theme="light"] .theme-toggle .sun{display:block}
 
 .hero{min-height:780px;border-bottom:1px solid rgba(184,154,97,.15)}
 .hero::before{width:720px;height:720px;top:-210px;right:-160px;background:radial-gradient(circle,rgba(40,78,120,.42),transparent 67%)}
@@ -339,6 +345,46 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
   .hero-content .hero-sub{max-width:500px}
   .hero-content .hero-stats{max-width:510px}
 }
+
+/* Bright theme: a calm parchment base, navy text, and the same muted-gold accent. */
+[data-theme="light"]{
+  --bg:#f4f1e9;
+  --bg2:#e8eef2;
+  --card:#ffffff;
+  --card-raised:#f9fbfc;
+  --border:#b7c5d0;
+  --text:#0a2540;
+  --text2:#4a6073;
+  --accent:#96733a;
+  --accent2:#96733a;
+  --grad:linear-gradient(135deg,#96733a,#b08c50);
+  --grad2:linear-gradient(135deg,#96733a,#c7a56b);
+}
+[data-theme="light"] body{background-image:linear-gradient(rgba(10,37,64,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(10,37,64,.04) 1px,transparent 1px)}
+[data-theme="light"] body::before{background:radial-gradient(circle at 85% 8%,rgba(159,183,201,.42),transparent 28rem),radial-gradient(circle at 5% 65%,rgba(150,115,58,.09),transparent 25rem)}
+[data-theme="light"] .section:nth-of-type(even)::before{background:rgba(232,238,242,.72);border-color:rgba(150,115,58,.14)}
+[data-theme="light"] .navbar.scrolled{background:rgba(244,241,233,.9);border-bottom-color:rgba(150,115,58,.24);box-shadow:0 8px 32px rgba(10,37,64,.08)}
+[data-theme="light"] .logo span{--text:#0a2540}
+[data-theme="light"] .nav-links a{color:#40576b}
+[data-theme="light"] .nav-cta,[data-theme="light"] .btn-primary,[data-theme="light"] .contact-form button{color:#fffdf8}
+[data-theme="light"] .theme-toggle{background:rgba(255,255,255,.75);border-color:rgba(150,115,58,.45)}
+[data-theme="light"] .hero::before{background:radial-gradient(circle,rgba(114,151,185,.32),transparent 67%)}
+[data-theme="light"] .hero::after{background:radial-gradient(circle,rgba(150,115,58,.12),transparent 67%)}
+[data-theme="light"] .hero-stats .stat{border-color:rgba(150,115,58,.35)}
+[data-theme="light"] .hero-stats .stat p{color:#587084}
+[data-theme="light"] .hero-avatar{background:#e5edf2;box-shadow:20px 22px 0 rgba(150,115,58,.13)}
+[data-theme="light"] .hero-avatar::before,[data-theme="light"] .about-img::before{background:linear-gradient(180deg,transparent 55%,rgba(10,37,64,.2))}
+[data-theme="light"] .about-img{background:#e5edf2}
+[data-theme="light"] .skill-card{background:rgba(255,255,255,.82);border-color:rgba(74,96,115,.22);box-shadow:0 6px 18px rgba(10,37,64,.035)}
+[data-theme="light"] .skill-card:hover{box-shadow:0 18px 35px rgba(10,37,64,.1)}
+[data-theme="light"] .skill-tags span{background:rgba(232,238,242,.78);border-color:rgba(74,96,115,.18);color:#4a6073}
+[data-theme="light"] .project-card{border-color:rgba(74,96,115,.25);box-shadow:0 6px 18px rgba(10,37,64,.04)}
+[data-theme="light"] .project-card:hover{box-shadow:0 20px 40px rgba(10,37,64,.12)}
+[data-theme="light"] .project-thumb{background:linear-gradient(135deg,#dce8ef,#edf3f5)}
+[data-theme="light"] .project-thumb .overlay{background:rgba(10,37,64,.72)}
+[data-theme="light"] .contact-link{background:rgba(255,255,255,.8);border-color:rgba(74,96,115,.24)}
+[data-theme="light"] .contact-form input,[data-theme="light"] .contact-form textarea{background:rgba(255,255,255,.9);border-color:rgba(74,96,115,.32)}
+[data-theme="light"] .footer{background:rgba(232,238,242,.58)}
 </style>
 </head>
 <body>
@@ -354,7 +400,13 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
       <a href="#process">Process</a>
       <a href="#contact">Contact</a>
     </div>
-    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's Talk</button>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to bright theme" aria-pressed="false" title="Switch to bright theme">
+        <span class="moon" aria-hidden="true">☾</span>
+        <span class="sun" aria-hidden="true">☀</span>
+      </button>
+      <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's Talk</button>
+    </div>
   </div>
 </nav>
 
@@ -444,7 +496,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
         </div>
         <h3>Leadership ability</h3>
         <p>I am a thoughtful and decisive leader who brings clarity to complex situations, earns trust through empathy and integrity, and in mostly cases inspires people to work together confidently toward meaningful shared goals.</p>
-        <div class="skill-tags"><span>Clear communication,</span><span>decision making</span><span>Team work</span><span>A/B Trust & empathy</span></div>
+        <div class="skill-tags"><span>Clear communication skills</span><span>decision making</span><span>Team work</span><span>A/B Trust & empathy</span></div>
       </div>
       <div class="skill-card fade-up">
         <div class="skill-icon">
@@ -506,7 +558,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
           <div class="overlay"><button class="overlay-btn">View Project</button></div>
         </div>
         <div class="project-info">
-          <div class="tags"><span>E-Commerce</span><span>Next.js</span><span>Full Stack</span></div>
+          <div class="tags"><span>UI/UX designer</span><span>Next.js</span><span>Full Stack</span></div>
           <h3>MANAGEMENT INFORMATION SYSTEM</h3>
           <p>Modern information system that enabled user(employee) to manage attendence and participation in his or her company, in this project i was the projec collaborator .</p>
         </div>
@@ -668,6 +720,24 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Theme preference: default to dark navy and remember the visitor's choice.
+const themeToggle = document.getElementById('theme-toggle');
+const savedTheme = localStorage.getItem('portfolio-theme');
+const setTheme = (theme) => {
+  document.documentElement.dataset.theme = theme;
+  const isLight = theme === 'light';
+  themeToggle.setAttribute('aria-pressed', String(isLight));
+  themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to bright theme');
+  themeToggle.setAttribute('title', isLight ? 'Switch to dark theme' : 'Switch to bright theme');
+};
+
+setTheme(savedTheme === 'light' ? 'light' : 'dark');
+themeToggle.addEventListener('click', () => {
+  const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+  setTheme(nextTheme);
+  localStorage.setItem('portfolio-theme', nextTheme);
 });
 
 // Intersection Observer for fade-up animations
