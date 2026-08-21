@@ -188,6 +188,144 @@ ul{list-style:none}
   .hero-stats{flex-direction:column;gap:16px}
   .contact-form .form-row{grid-template-columns:1fr}
 }
+
+/* ===== DEEP NAVY & MUTED GOLD REDESIGN ===== */
+:root{
+  --bg:#061426;
+  --bg2:#091c33;
+  --card:#0c223d;
+  --card-raised:#102a48;
+  --border:#24405e;
+  --text:#f6f1e6;
+  --text2:#b6c3d1;
+  --accent:#b89a61;
+  --accent2:#b89a61;
+  --grad:linear-gradient(135deg,#b89a61,#d0b57c);
+  --grad2:linear-gradient(135deg,#b89a61,#e0c993);
+  --radius:10px;
+  --transition:.28s cubic-bezier(.2,.75,.25,1);
+}
+body{
+  background:var(--bg);
+  background-image:linear-gradient(rgba(184,154,97,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(184,154,97,.035) 1px,transparent 1px);
+  background-size:48px 48px;
+  color:var(--text);
+  font-family:Inter,"Segoe UI",system-ui,-apple-system,sans-serif;
+}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 85% 8%,rgba(35,69,108,.36),transparent 28rem),radial-gradient(circle at 5% 65%,rgba(184,154,97,.07),transparent 25rem)}
+.container{max-width:1160px}
+.section{padding:112px 0;position:relative}
+.section:nth-of-type(even)::before{content:"";position:absolute;inset:28px 0;background:rgba(9,28,51,.58);border-top:1px solid rgba(184,154,97,.1);border-bottom:1px solid rgba(184,154,97,.1);z-index:-1}
+.section-label{display:flex;align-items:center;gap:10px;color:var(--accent);font-size:.69rem;font-weight:700;letter-spacing:.24em}
+.section-label::before{content:"";width:28px;height:1px;background:var(--accent)}
+.section-title,.about-text h2,.contact-info h2{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:-.03em}
+.section-title{font-size:clamp(2.25rem,4vw,3.55rem);max-width:650px;margin-bottom:14px}
+.section-desc{font-size:1.03rem;line-height:1.8}
+.badge{background:rgba(184,154,97,.1);border-color:rgba(184,154,97,.28);color:#dfc997}
+
+.navbar{padding:24px 0}
+.navbar.scrolled{background:rgba(6,20,38,.88);border-bottom-color:rgba(184,154,97,.18);box-shadow:0 8px 32px rgba(0,0,0,.16)}
+.logo{font-family:Georgia,"Times New Roman",serif;font-size:1.45rem;letter-spacing:-.04em}
+.logo span{background:none;-webkit-text-fill-color:var(--text);position:relative;padding-left:14px}
+.logo span::before{content:"";position:absolute;left:0;top:4px;width:3px;height:19px;background:var(--accent)}
+.nav-links{gap:28px}
+.nav-links a{color:#c7d1dc;font-size:.78rem;text-transform:uppercase;letter-spacing:.09em}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a::after{background:var(--accent);height:1px}
+.nav-cta,.btn-primary,.contact-form button{border-radius:4px;background:var(--accent);color:#07172a;letter-spacing:.025em;box-shadow:none}
+.nav-cta{padding:10px 20px}
+.nav-cta:hover,.btn-primary:hover,.contact-form button:hover{background:#d0b57c;box-shadow:0 10px 24px rgba(0,0,0,.22);opacity:1}
+
+.hero{min-height:780px;border-bottom:1px solid rgba(184,154,97,.15)}
+.hero::before{width:720px;height:720px;top:-210px;right:-160px;background:radial-gradient(circle,rgba(40,78,120,.42),transparent 67%)}
+.hero::after{width:540px;height:540px;bottom:-220px;left:25%;background:radial-gradient(circle,rgba(184,154,97,.1),transparent 67%)}
+.hero-content{max-width:655px;padding-top:56px}
+.hero-greeting{color:#dec894;font-size:.78rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase}
+.hero-greeting .dot{width:7px;height:7px;background:var(--accent);box-shadow:0 0 0 4px rgba(184,154,97,.13)}
+.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3.6rem,6.1vw,5.8rem);font-weight:500;line-height:1.01;letter-spacing:-.055em;margin-bottom:28px}
+.hero h1 .highlight{background:none;-webkit-text-fill-color:var(--accent);font-style:italic}
+.hero-sub{font-size:1.08rem;line-height:1.8;color:var(--text2);max-width:510px}
+.btn-primary,.btn-outline{padding:14px 25px;border-radius:4px;font-size:.9rem}
+.btn-outline{border-color:rgba(184,154,97,.5);color:#e7dfcf;background:rgba(6,20,38,.25)}
+.btn-outline:hover{color:var(--accent);border-color:var(--accent);background:rgba(184,154,97,.07)}
+.hero-stats{gap:0;margin-top:62px}
+.hero-stats .stat{padding:0 28px;border-left:1px solid rgba(184,154,97,.28)}
+.hero-stats .stat:first-child{padding-left:0;border-left:0}
+.hero-stats .stat h3{background:none;-webkit-text-fill-color:var(--text);font-family:Georgia,"Times New Roman",serif;font-size:2rem;font-weight:500}
+.hero-stats .stat p{font-size:.67rem;letter-spacing:.09em;text-transform:uppercase;color:#9fb0c2}
+.hero-visual{right:7%;width:34%;pointer-events:auto}
+.hero-avatar{width:min(29vw,360px);height:min(38vw,450px);border-radius:180px 180px 6px 6px;background:var(--card);border:1px solid rgba(184,154,97,.52);padding:8px;box-shadow:20px 22px 0 rgba(184,154,97,.12);overflow:hidden}
+.hero-avatar::before{content:"";inset:8px;border-radius:174px 174px 2px 2px;background:linear-gradient(180deg,transparent 55%,rgba(6,20,38,.45));opacity:1;z-index:1}
+.hero-avatar img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:174px 174px 2px 2px;filter:saturate(.78) contrast(1.04)}
+
+.about-grid,.contact-grid{gap:76px}
+.about-img{border-radius:5px;border-color:rgba(184,154,97,.4);padding:8px;background:#0a1c31;box-shadow:-18px 18px 0 rgba(184,154,97,.1)}
+.about-img::before{background:linear-gradient(180deg,transparent 55%,rgba(6,20,38,.45));opacity:1;z-index:1}
+.about-img img{position:relative;z-index:0;filter:saturate(.82)}
+.about-float-card{border-radius:4px;bottom:-22px;right:-25px;background:var(--card-raised);border-color:rgba(184,154,97,.4);box-shadow:0 14px 30px rgba(0,0,0,.2)}
+.about-float-card .icon-circle{border-radius:3px;background:var(--accent)}
+.about-float-card .icon-circle svg{fill:#07172a}
+.about-text h2,.contact-info h2{font-size:clamp(2rem,3.2vw,3rem);line-height:1.13}
+.about-text p{line-height:1.8}
+.about-text .highlight-list li svg{fill:var(--accent)}
+
+.skills-grid{gap:16px}
+.skill-card{background:rgba(12,34,61,.9);border-radius:5px;border-color:rgba(91,122,154,.3);padding:30px 28px}
+.skill-card::before{height:1px;background:var(--accent)}
+.skill-card:hover{background:var(--card-raised);border-color:rgba(184,154,97,.65);transform:translateY(-6px);box-shadow:0 18px 35px rgba(0,0,0,.17)}
+.skill-icon{border-radius:3px;background:rgba(184,154,97,.11);border:1px solid rgba(184,154,97,.18)}
+.skill-icon svg{fill:var(--accent)}
+.skill-card h3{font-family:Georgia,"Times New Roman",serif;font-size:1.3rem;font-weight:600}
+.skill-tags span{background:rgba(6,20,38,.45);border-color:rgba(126,150,174,.2);color:#b6c3d1}
+
+.projects-grid{gap:24px}
+.project-card{border-radius:5px;background:var(--card);border-color:rgba(91,122,154,.35)}
+.project-card:hover{border-color:rgba(184,154,97,.7);box-shadow:0 20px 40px rgba(0,0,0,.22)}
+.project-thumb{background:linear-gradient(135deg,#0d2947,#08182d)}
+.project-thumb::before{background:linear-gradient(135deg,rgba(184,154,97,.14),transparent 56%);opacity:1}
+.project-thumb .placeholder-icon{color:var(--accent)}
+.project-thumb .overlay{background:rgba(6,20,38,.78)}
+.overlay-btn{border-radius:3px;background:var(--accent);color:#07172a}
+.project-info{padding:26px}
+.project-info .tags span{background:rgba(184,154,97,.09);border-color:rgba(184,154,97,.22);color:#dcc38a}
+.project-info h3{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:.01em}
+
+.process-timeline::before{background:linear-gradient(90deg,transparent,rgba(184,154,97,.6),transparent);height:1px}
+.process-step .step-num{background:var(--bg);border-color:var(--accent);color:var(--accent);font-family:Georgia,"Times New Roman",serif}
+.process-step h4{font-family:Georgia,"Times New Roman",serif;font-size:1.1rem}
+
+.testimonial-card{border-radius:5px;background:var(--card);border-color:rgba(184,154,97,.3);padding:42px;position:relative}
+.testimonial-card::before{content:"\201C";position:absolute;top:9px;left:22px;color:var(--accent);font-family:Georgia,serif;font-size:5rem;line-height:1;opacity:.35}
+.testimonial-card .stars svg{fill:var(--accent)}
+.testimonial-author .avatar{background:var(--accent);color:#07172a;border-radius:3px}
+
+.contact-link{background:rgba(12,34,61,.8);border-radius:5px;border-color:rgba(91,122,154,.35)}
+.contact-link:hover{border-color:rgba(184,154,97,.7);background:var(--card-raised)}
+.contact-link .cl-icon{border-radius:3px;background:rgba(184,154,97,.1)}
+.contact-link .cl-icon svg{fill:var(--accent)}
+.contact-form input,.contact-form textarea{background:rgba(12,34,61,.85);border-radius:4px;border-color:rgba(91,122,154,.45)}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(184,154,97,.1)}
+.footer{border-top-color:rgba(184,154,97,.2);background:rgba(5,16,30,.45)}
+.footer-socials a{border-radius:3px;background:var(--card);border-color:rgba(91,122,154,.35)}
+.footer-socials a:hover{border-color:var(--accent)}
+.footer-socials a svg{fill:var(--text2)}
+
+@media(max-width:900px){
+  .section{padding:84px 0}
+  .hero{min-height:720px}
+  .hero-content{max-width:100%}
+  .hero-visual{display:none}
+  .about-grid,.contact-grid{gap:48px}
+}
+@media(max-width:600px){
+  .container{padding:0 20px}
+  .hero{min-height:690px}
+  .hero h1{font-size:3rem}
+  .hero-stats .stat{padding:12px 0;border:0;border-top:1px solid rgba(184,154,97,.25)}
+  .hero-stats .stat:first-child{border-top:0}
+  .testimonial-card{padding:34px 22px}
+  .about-float-card{right:10px}
+}
 </style>
 </head>
 <body>
@@ -229,9 +367,9 @@ ul{list-style:none}
       <div class="stat"><h3>30+</h3><p>Happy Clients</p></div>
     </div>
   </div>
-  <img src="Screenshot 2026-08-21 152921.png"alt="Profile photo"style="width:100%;height:100%;object-fit:cover;border-radius:50%">
+  <div class="hero-visual">
     <div class="hero-avatar">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+      <img src="Screenshot 2026-08-21 152921.png" alt="Professional profile photo">
     </div>
   </div>
 </section>
@@ -458,7 +596,7 @@ ul{list-style:none}
         <div class="contact-links">
           
           <!-- Clickable Email Card -->
-          <a href="mailto:seniorkalima194@://gmail.com" class="contact-link" style="text-decoration: none; color: inherit;">
+          <a href="mailto:seniorkalima194@gmail.com" class="contact-link" style="text-decoration: none; color: inherit;">
             <div class="cl-icon">
               <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             </div>
