@@ -405,9 +405,65 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
 [data-theme="light"] .footer{background:rgba(232,238,242,.58)}
 @media(hover:none){.social-orbit:active,.social-orbit:active .orbit-icon{animation-play-state:paused}}
 @media(prefers-reduced-motion:reduce){.hero-avatar,.social-orbit,.orbit-icon{animation:none}}
+
+/* Temporary shade created wherever a pointer touches the page. */
+.touch-shade{
+  position:fixed;
+  width:180px;
+  height:180px;
+  left:0;
+  top:0;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:999;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(184,154,97,.28) 0%,rgba(184,154,97,.12) 34%,transparent 72%);
+  animation:touch-shade-fade 2.2s ease-out forwards;
+}
+@keyframes touch-shade-fade{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.45)}
+  15%{opacity:1}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.35)}
+}
+.cursor-glow{
+  position:fixed;
+  width:18px;
+  height:18px;
+  left:0;
+  top:0;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:998;
+  opacity:0;
+  transform:translate(-50%,-50%);
+  background:rgba(224,201,147,.9);
+  border:1px solid rgba(255,244,208,.85);
+  box-shadow:0 0 0 5px rgba(184,154,97,.14),0 0 18px rgba(184,154,97,.58);
+  transition:opacity .25s ease;
+  will-change:left,top,opacity;
+}
+.cursor-glow.visible{opacity:1}
+.cursor-trail{
+  position:fixed;
+  width:42px;
+  height:42px;
+  left:0;
+  top:0;
+  border:1px solid rgba(184,154,97,.42);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:997;
+  transform:translate(-50%,-50%) scale(1);
+  animation:cursor-trail-fade 1.8s ease-out forwards;
+}
+@keyframes cursor-trail-fade{
+  to{opacity:0;transform:translate(-50%,-50%) scale(.08)}
+}
 </style>
 </head>
 <body>
+
+<div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar" id="navbar">
@@ -798,6 +854,47 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Keep a single muted-gold glow beneath the cursor instead of creating many elements.
+const cursorGlow = document.getElementById('cursor-glow');
+let cursorFrame;
+let cursorPosition;
+let lastTrailTime = 0;
+document.addEventListener('pointermove', (event) => {
+  if (event.pointerType === 'touch') return;
+  cursorPosition = { x: event.clientX, y: event.clientY };
+  cursorGlow.classList.add('visible');
+  if (event.timeStamp - lastTrailTime > 45) {
+    const trail = document.createElement('span');
+    trail.className = 'cursor-trail';
+    trail.style.left = `${event.clientX}px`;
+    trail.style.top = `${event.clientY}px`;
+    document.body.appendChild(trail);
+    trail.addEventListener('animationend', () => trail.remove(), { once: true });
+    window.setTimeout(() => trail.remove(), 2000);
+    const trails = document.querySelectorAll('.cursor-trail');
+    if (trails.length > 24) trails[0].remove();
+    lastTrailTime = event.timeStamp;
+  }
+  if (cursorFrame) return;
+  cursorFrame = window.requestAnimationFrame(() => {
+    cursorGlow.style.left = `${cursorPosition.x}px`;
+    cursorGlow.style.top = `${cursorPosition.y}px`;
+    cursorFrame = null;
+  });
+});
+document.addEventListener('mouseleave', () => cursorGlow.classList.remove('visible'));
+
+// Leave a brief muted-gold shade at the point of contact.
+document.addEventListener('pointerdown', (event) => {
+  const shade = document.createElement('span');
+  shade.className = 'touch-shade';
+  shade.style.left = `${event.clientX}px`;
+  shade.style.top = `${event.clientY}px`;
+  document.body.appendChild(shade);
+  shade.addEventListener('animationend', () => shade.remove(), { once: true });
+  window.setTimeout(() => shade.remove(), 2400);
+});
 </script>
 </body>
 </html>
