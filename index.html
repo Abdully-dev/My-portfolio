@@ -331,19 +331,16 @@
         </div>
       </div>
 
-      <!-- Working Form powered by FormSubmit -->
-      <form action="https://formsubmit.co" method="POST" class="contact-form fade-up">
+      <!-- Opens a WhatsApp message with the visitor's details prefilled. -->
+      <form id="whatsapp-form" class="contact-form fade-up">
         <div class="form-row">
           <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
+          <input type="text" name="subject" placeholder="Subject">
         </div>
-        <input type="text" name="_subject" placeholder="Subject">
+        <input type="tel" name="phone" placeholder="Your WhatsApp Number">
         <textarea name="message" placeholder="Tell me about your project..." required></textarea>
-        
-        <!-- Keeps user on your site instead of redirecting to FormSubmit page -->
-        <input type="hidden" name="_next" value="https://github.io">
-        
-        <button type="submit">Send Message</button>
+
+        <button type="submit">Message Me on WhatsApp</button>
       </form>
     </div>
   </div>

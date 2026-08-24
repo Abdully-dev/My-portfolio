@@ -34,6 +34,21 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+// Send contact form details directly to WhatsApp instead of submitting email.
+const whatsappForm = document.getElementById('whatsapp-form');
+const whatsappNumber = '255682306407';
+whatsappForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const formData = new FormData(whatsappForm);
+  const message = [
+    `Hello Kalima, my name is ${formData.get('name')}.`,
+    formData.get('phone') ? `My WhatsApp number is ${formData.get('phone')}.` : '',
+    formData.get('subject') ? `Subject: ${formData.get('subject')}` : '',
+    `Message: ${formData.get('message')}`
+  ].filter(Boolean).join('\n');
+  window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+});
+
 // Keep a single muted-gold glow beneath the cursor instead of creating many elements.
 const cursorGlow = document.getElementById('cursor-glow');
 let cursorFrame;
