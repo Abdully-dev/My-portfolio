@@ -49,6 +49,49 @@ whatsappForm.addEventListener('submit', (event) => {
   window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
 });
 
+// Open the full project image in a larger preview when the View Project button is clicked.
+const projectModal = document.getElementById('project-modal');
+const projectModalImage = document.getElementById('project-modal-image');
+const projectModalTitle = document.getElementById('project-modal-title');
+const closeProjectModal = () => {
+  projectModal.classList.remove('is-open');
+  projectModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+};
+
+document.querySelectorAll('.overlay-btn').forEach((button) => {
+  button.addEventListener('click', (event) => {
+    const card = event.currentTarget.closest('.project-card');
+    const explicitImage = card.dataset.projectImage;
+    const image = card.querySelector('.project-image, img');
+    const title = card.querySelector('.project-info h3');
+
+    if (!explicitImage && !image) {
+      return;
+    }
+
+    const sourceImage = explicitImage || image.src;
+    projectModalImage.src = sourceImage;
+    projectModalImage.alt = image?.alt || title?.textContent || 'Project preview';
+
+    if (title) {
+      projectModalTitle.textContent = title.textContent;
+    }
+
+    projectModal.classList.add('is-open');
+    projectModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+  });
+});
+
+document.querySelector('[data-close-modal]').addEventListener('click', closeProjectModal);
+document.querySelector('.project-modal-close').addEventListener('click', closeProjectModal);
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && projectModal.classList.contains('is-open')) {
+    closeProjectModal();
+  }
+});
+
 // Keep a single muted-gold glow beneath the cursor instead of creating many elements.
 const cursorGlow = document.getElementById('cursor-glow');
 let cursorFrame;

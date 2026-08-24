@@ -180,10 +180,10 @@
     <h2 class="section-title fade-up">Featured Projects</h2>
     <p class="section-desc fade-up">A curated selection of projects that showcase my development and design skills.</p>
     <div class="projects-grid">
-      <div class="project-card fade-up">
+      <div class="project-card fade-up" data-project-image="image.png">
         <div class="project-thumb">
-          <div class="placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-          <div class="overlay"><button class="overlay-btn">View Project</button></div>
+          <img src="image.png" alt="Adaptive Learning System project preview" class="project-image">
+          <div class="overlay"><button type="button" class="overlay-btn">View Project</button></div>
         </div>
         <div class="project-info">
           <div class="tags"><span>UI/UX Design</span><span>React</span><span>FastAPI</span><span>Leadership</span></div>
@@ -277,11 +277,11 @@
         <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
         <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
       </div>
-      <blockquote>"Working with them was a game-changer. They didn't just design a website — they crafted an experience that our users genuinely love. The attention to detail in both design and code was exceptional."</blockquote>
+      <blockquote>"Working with him was a game-changer. He didn't just design a website — He crafted an experience that our users genuinely love. The attention to detail in both design and code was exceptional."</blockquote>
       <div class="testimonial-author" style="justify-content:center">
-        <div class="avatar">JD</div>
+        <div class="avatar">JN</div>
         <div class="info">
-          <h5>Mr Joefrey nassoro</h5>
+          <h5>Mr Joefrey nasson</h5>
           <p>CEO and founder, Ai Company Inc.</p>
         </div>
       </div>
@@ -360,6 +360,17 @@
     </div>
   </div>
 </footer>
+
+<div class="project-modal" id="project-modal" aria-hidden="true">
+  <div class="project-modal-backdrop" data-close-modal></div>
+  <div class="project-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+    <button type="button" class="project-modal-close" aria-label="Close project preview">×</button>
+    <img id="project-modal-image" src="" alt="Project preview">
+    <div class="project-modal-caption">
+      <h3 id="project-modal-title">Project Preview</h3>
+    </div>
+  </div>
+</div>
 
 <!-- ===== JS ===== -->
 <script src="js/main.js" defer></script>

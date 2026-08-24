@@ -103,11 +103,22 @@ ul{list-style:none}
 .project-card:hover{border-color:var(--accent2);transform:translateY(-4px)}
 .project-thumb{aspect-ratio:16/10;background:var(--bg2);position:relative;overflow:hidden}
 .project-thumb::before{content:'';position:absolute;inset:0;background:var(--grad);opacity:.05}
+.project-thumb .project-image{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.project-card:hover .project-image{transform:scale(1.04)}
 .project-thumb .placeholder-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
 .project-thumb .placeholder-icon svg{width:48px;height:48px;opacity:.25}
 .project-thumb .overlay{position:absolute;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;opacity:0;transition:var(--transition)}
 .project-card:hover .overlay{opacity:1}
 .overlay-btn{padding:12px 24px;border-radius:999px;background:#fff;color:#000;font-weight:600;font-size:.85rem;border:none;cursor:pointer}
+.project-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:32px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease, visibility .25s ease;z-index:2000;background:rgba(4,10,18,.72)}
+.project-modal.is-open{opacity:1;visibility:visible;pointer-events:auto}
+.project-modal-backdrop{position:absolute;inset:0}
+.project-modal-dialog{position:relative;max-width:min(92vw,900px);width:100%;background:rgba(11,24,38,.96);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:18px;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.project-modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border:none;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:1.6rem;line-height:1;cursor:pointer;z-index:2}
+.project-modal img{display:block;width:100%;max-height:72vh;object-fit:contain;border-radius:12px;background:#050b12}
+.project-modal-caption{padding-top:14px;text-align:center}
+.project-modal-caption h3{font-size:1rem;letter-spacing:.08em;text-transform:uppercase;color:#f5f7fa;margin:0}
+body.modal-open{overflow:hidden}
 .project-info{padding:24px}
 .project-info .tags{display:flex;gap:6px;margin-bottom:12px}
 .project-info .tags span{font-size:.7rem;padding:4px 10px;border-radius:999px;background:rgba(109,40,217,.12);color:var(--accent2);border:1px solid rgba(167,139,250,.2)}
