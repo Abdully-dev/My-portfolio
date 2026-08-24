@@ -4,7 +4,7 @@ window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Theme preference: default to dark navy and remember the visitor's choice.
+// Theme preference: default to the light parchment palette and remember the visitor's choice.
 const themeToggle = document.getElementById('theme-toggle');
 const savedTheme = localStorage.getItem('portfolio-theme');
 const setTheme = (theme) => {
@@ -15,7 +15,7 @@ const setTheme = (theme) => {
   themeToggle.setAttribute('title', isLight ? 'Switch to dark theme' : 'Switch to bright theme');
 };
 
-setTheme(savedTheme === 'light' ? 'light' : 'dark');
+setTheme(savedTheme ? savedTheme : 'light');
 themeToggle.addEventListener('click', () => {
   const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
   setTheme(nextTheme);
