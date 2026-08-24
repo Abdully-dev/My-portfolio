@@ -264,11 +264,11 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
 .hero-avatar::before{content:"";inset:8px;border-radius:174px 174px 2px 2px;background:linear-gradient(180deg,transparent 55%,rgba(6,20,38,.45));opacity:1;z-index:1}
 .hero-avatar img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:174px 174px 2px 2px;filter:saturate(.78) contrast(1.04)}
 @keyframes portrait-float{0%,100%{transform:translateY(0) rotate(-.7deg)}50%{transform:translateY(-16px) rotate(.7deg)}}
-.social-orbit{position:absolute;top:50%;left:50%;width:min(40vw,490px);aspect-ratio:1;transform:translate(-50%,-50%);border:1px solid rgba(184,154,97,.34);border-radius:50%;z-index:2;pointer-events:auto;animation:orbit-spin 20s linear infinite}
+.social-orbit{position:absolute;top:50%;left:50%;width:min(40vw,490px);aspect-ratio:1;transform:translate(-50%,-50%);border:1px solid rgba(184,154,97,.34);border-radius:50%;z-index:2;pointer-events:auto}
 .social-orbit::before,.social-orbit::after{content:"";position:absolute;border:1px solid rgba(184,154,97,.16);border-radius:50%;pointer-events:none}
 .social-orbit::before{inset:17px}
 .social-orbit::after{inset:-15px;border-style:dashed}
-.orbit-icon{position:absolute;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(184,154,97,.72);border-radius:50%;background:var(--card-raised);color:var(--accent);box-shadow:0 8px 18px rgba(0,0,0,.24);cursor:pointer;transition:var(--transition);animation:orbit-counter-spin 20s linear infinite}
+.orbit-icon{position:absolute;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(184,154,97,.72);border-radius:50%;background:var(--card-raised);color:var(--accent);box-shadow:0 8px 18px rgba(0,0,0,.24);cursor:pointer;transition:var(--transition)}
 .orbit-icon:hover{background:var(--accent);color:#07172a;box-shadow:0 10px 22px rgba(0,0,0,.32)}
 .orbit-icon svg{width:18px;height:18px;fill:currentColor}
 .orbit-icon.linkedin{top:-21px;left:calc(50% - 21px)}
@@ -276,10 +276,6 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
 .orbit-icon.instagram{right:9%;bottom:1%}
 .orbit-icon.tiktok{left:9%;bottom:1%}
 .orbit-icon.facebook{left:-21px;top:calc(36% - 21px)}
-.social-orbit:hover,.social-orbit:focus-within,.social-orbit:hover .orbit-icon,.social-orbit:focus-within .orbit-icon{animation-play-state:paused}
-@keyframes orbit-spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-@keyframes orbit-counter-spin{to{transform:rotate(-360deg)}}
-
 .about-grid,.contact-grid{gap:76px}
 .about-img{border-radius:5px;border-color:rgba(184,154,97,.4);padding:8px;background:#0a1c31;box-shadow:-18px 18px 0 rgba(184,154,97,.1)}
 .about-img::before{background:linear-gradient(180deg,transparent 55%,rgba(6,20,38,.45));opacity:1;z-index:1}
@@ -403,8 +399,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
 [data-theme="light"] .contact-link{background:rgba(255,255,255,.8);border-color:rgba(74,96,115,.24)}
 [data-theme="light"] .contact-form input,[data-theme="light"] .contact-form textarea{background:rgba(255,255,255,.9);border-color:rgba(74,96,115,.32)}
 [data-theme="light"] .footer{background:rgba(232,238,242,.58)}
-@media(hover:none){.social-orbit:active,.social-orbit:active .orbit-icon{animation-play-state:paused}}
-@media(prefers-reduced-motion:reduce){.hero-avatar,.social-orbit,.orbit-icon{animation:none}}
+@media(prefers-reduced-motion:reduce){.hero-avatar{animation:none}}
 
 /* Temporary shade created wherever a pointer touches the page. */
 .touch-shade{
@@ -513,19 +508,19 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
       <img src="Screenshot 2026-08-21 152921.png" alt="Professional profile photo">
     </div>
     <div class="social-orbit" aria-label="Social media profiles">
-      <a class="orbit-icon linkedin" href="https://www.linkedin.com/in/abdully-kalima-45a75a429" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile" title="Open LinkedIn profile">
+      <a class="orbit-icon linkedin" href="https://www.linkedin.com/in/abdulsalam-kalima-45a75a429" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile" title="Open LinkedIn profile">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.81 3.81 0 0 0-3.3-3.58 3.08 3.08 0 0 0-2.79 1.5h-.04V10H9.77v8.5h2.6v-4.17a1.81 1.81 0 0 1 1.77-2.05c1.09 0 1.53.83 1.53 2.03v4.19h2.83M7.15 8.63a1.63 1.63 0 1 0 0-3.26 1.63 1.63 0 0 0 0 3.26M8.45 18.5V10h-2.6v8.5h2.6z"/></svg>
       </a>
-      <a class="orbit-icon youtube" href="https://www.linkedin.com/in/abdully-kalima-45a75a429" target="_blank" rel="noopener noreferrer" aria-label="Open YouTube channel" title="Open YouTube channel">
+      <a class="orbit-icon youtube" href="https://www.linkedin.com/in/abdulsalam-kalima-45a75a429" target="_blank" rel="noopener noreferrer" aria-label="Open YouTube channel" title="Open YouTube channel">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
       </a>
-      <a class="orbit-icon instagram" href="https://www.linkedin.com/in/abdully-kalima-45a75a429" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram profile" title="Open Instagram profile">
+      <a class="orbit-icon instagram" href="https://www.linkedin.com/in/abdulsalam-kalima-45a75a429" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram profile" title="Open Instagram profile">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 12 14.5 2.5 2.5 0 0 0 12 9.5zM17.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
       </a>
-      <a class="orbit-icon tiktok" href="https://www.linkedin.com/in/abdully-kalima-45a75a429" target="_blank" rel="noopener noreferrer" aria-label="Open TikTok profile" title="Open TikTok profile">
+      <a class="orbit-icon tiktok" href="https://www.linkedin.com/in/abdulsalam-kalima-45a75a429" target="_blank" rel="noopener noreferrer" aria-label="Open TikTok profile" title="Open TikTok profile">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.7 3c.3 2.2 1.6 3.5 3.7 3.7v3.1c-1.3 0-2.5-.4-3.6-1.1v6.7a5.6 5.6 0 1 1-4.9-5.6v3.1a2.5 2.5 0 1 0 1.8 2.4V3h3z"/></svg>
       </a>
-      <a class="orbit-icon facebook" href="https://www.linkedin.com/in/abdully-kalima-45a75a429" target="_blank" rel="noopener noreferrer" aria-label="Open Facebook profile" title="Open Facebook profile">
+      <a class="orbit-icon facebook" href="https://www.linkedin.com/in/abdulsalam-kalima-45a75a429" target="_blank" rel="noopener noreferrer" aria-label="Open Facebook profile" title="Open Facebook profile">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.2-1.5 1.5-1.5h1.8V3.9c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6V10H6.6v3h3V21h3.9z"/></svg>
       </a>
     </div>
@@ -810,7 +805,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
     <p class="footer-copy">&copy; 2026 Portfolio. All rights reserved.</p>
     <div class="footer-socials">
       <a href="#" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .3C5.37.3 0 5.67 0 12.3c0 5.3 3.44 9.8 8.17 11.37.6.11.82-.26.82-.57v-2.2c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.93.43.37.82 1.1.82 2.22v3.29c0 .31.21.69.82.57C20.57 22.1 24 17.6 24 12.3 24 5.67 18.63.3 12 .3z"/></svg></a>
-      <a href="#" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.81 3.81 0 0 0-3.3-3.58 3.08 3.08 0 0 0-2.79 1.5h-.04V10H9.77v8.5h2.6v-4.17a1.81 1.81 0 0 1 1.77-2.05c1.09 0 1.53.83 1.53 2.03v4.19h2.83M7.15 8.63a1.63 1.63 0 1 0 0-3.26 1.63 1.63 0 0 0 0 3.26M8.45 18.5V10h-2.6v8.5h2.6z"/></svg></a>
+      <a href="https://www.linkedin.com/in/abdulsalam-kalima-45a75a429" target="_blank" rel="noopener noreferrer" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.81 3.81 0 0 0-3.3-3.58 3.08 3.08 0 0 0-2.79 1.5h-.04V10H9.77v8.5h2.6v-4.17a1.81 1.81 0 0 1 1.77-2.05c1.09 0 1.53.83 1.53 2.03v4.19h2.83M7.15 8.63a1.63 1.63 0 1 0 0-3.26 1.63 1.63 0 0 0 0 3.26M8.45 18.5V10h-2.6v8.5h2.6z"/></svg></a>
       <a href="#" title="Dribbble"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.605 4.61a8.5 8.5 0 0 1 1.93 5.314c-.281-.054-3.101-.629-5.943-.261-.065-.158-.126-.317-.193-.478-.186-.441-.386-.88-.597-1.31 3.142-1.285 4.582-3.119 4.703-3.281zM12 3.429c2.01 0 3.858.73 5.297 1.938-.104.148-1.427 1.876-4.452 3.009-1.349-2.474-2.846-4.477-3.087-4.806A8.542 8.542 0 0 1 12 3.43zM8.51 4.596c.224.31 1.688 2.324 3.076 4.748-3.852 1.026-7.242 1.007-7.63 1.004A8.524 8.524 0 0 1 8.51 4.596zM3.442 12.02c0-.13.004-.26.01-.39.382.007 4.435.058 8.552-1.2.239.467.466.943.677 1.419l-.248.073c-4.297 1.378-6.597 5.151-6.73 5.387A8.503 8.503 0 0 1 3.442 12.02zm3.237 6.464c.093-.16 1.873-3.489 6.54-4.978l.038-.012a43.14 43.14 0 0 1 1.94 5.592 8.472 8.472 0 0 1-8.518-.602zm10.1.616a43.25 43.25 0 0 0-1.844-5.344c2.574-.409 4.836.261 5.124.34a8.5 8.5 0 0 1-3.28 5.004z"/></svg></a>
       <a href="#" title="Twitter / X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
     </div>
