@@ -36,7 +36,7 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
 // Send contact form details directly to WhatsApp instead of submitting email.
 const whatsappForm = document.getElementById('whatsapp-form');
-const whatsappNumber = '255682306407';
+const whatsappNumber = '255706075287';
 whatsappForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(whatsappForm);
